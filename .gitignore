@@ -28,10 +28,22 @@ replay_pid*
 .settings/
 .factorypath
 .project
-.lock
-.properties
 .metadata/
 
+# Maven specific files
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle specific files
+.gradle/
+build/
+
+# STS specific files
+.springBeans
 
 # Ignore the application.properties file if it contains sensitive information
 # Uncomment the line below if you store sensitive information in application.properties
@@ -51,3 +63,17 @@ MANIFEST.MF
 #  IDE specific files
 .idea/
 *.iml
+
+# Others
+.DS_Store
+node_modules/
+.env
+
+# Logs and temp files
+logs/
+*.log
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
