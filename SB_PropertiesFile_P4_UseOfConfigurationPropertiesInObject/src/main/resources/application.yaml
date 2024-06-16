@@ -1,0 +1,39 @@
+#In yaml/yml file values injecting using ConfigurationProperties annotation.
+#Remember in this file proper and exact space/tab is MOST IMPORTANT.
+#Here gen.store is my prefix and remaining all are referance variable and value.
+#Maintain all referance variable EXACT MARGIN.
+#Maintain all array type referance variable VALUES ALSO EXACT MARGIN.
+#Injecting value into normal variable
+   gen:
+      store:
+         snacks : Lays
+         softDrink: CocaCola
+#Injecting value into String array(stringArrayType is referance variable)
+         stringArrayType: 
+            - Miilkbar
+            - DairyMilk
+            - KitKat 
+#Injecting value into List(listType is referance variable)
+         listType: 
+            - rice
+            - dal
+            - ghee
+            - oil
+#We can write listType as list-type also
+#Injecting value into Set
+         setType:
+           - Cake
+           - Cake
+           - Ice-Cream
+           - Salt
+#Here no need of index value maintain
+#Injecting value in Map type
+         mapType:
+            adhaarNo: 102154587456
+            mobileNo: 4558896325
+            drivingLicence: 8562365895
+#Injecting value in HAS-A type relation class variable
+         megaStore:
+            food: Idle
+            cloth: Jeans
+            electric-item: Heater
