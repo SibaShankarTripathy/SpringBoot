@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.sst.serviceimpl.ProductDetailsServiceImpl;
+import com.sst.service.ProductDetailsService;
 
 @Component
 public class ProductDetailsRunner implements CommandLineRunner {
 
 	@Autowired
-	ProductDetailsServiceImpl productDetailsServiceImpl;
+	ProductDetailsService productDetailsService;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -25,10 +25,10 @@ public class ProductDetailsRunner implements CommandLineRunner {
 		int maxLoop = 1;
 		while (maxLoop <= 8) {
 			System.out.println("Select your choice: \n1-Insert single records" + "\n2-Find all records"
-					+ "\n3-Find Records By Id range " +"\n4-Update exist record"+ "\n5-Delete records by Ids" + "\n0-Exit");
+					+ "\n3-Find Records By price range " +"\n4-Update exist record"+ "\n5-Delete records by Ids"+ "\n6-Get record by name"+ "\n7-Get specific column" + "\n0-Exit");
 			try {
 				Integer num = Integer.parseInt(reader.readLine());
-				if (num >= 0 && num <= 4) {
+				if (num >= 0 && num <= 8) {
 					switch (num) {
 					case 0: {
 						System.out.println("All Operation Stopped");
@@ -36,27 +36,37 @@ public class ProductDetailsRunner implements CommandLineRunner {
 					}
 					case 1: {
 						System.out.println("You selected to insert record");
-						productDetailsServiceImpl.insertProduct();
+						productDetailsService.insertProduct();
 						break;
 					}
 					case 2: {
 						System.out.println("You selected to find all records");
-						productDetailsServiceImpl.retrieveProduct();
+						productDetailsService.retrieveProduct();
 						break;
 					}
 					case 3: {
 						System.out.println("You selected to findByID records");
-						productDetailsServiceImpl.retrieveProductById();
+						productDetailsService.retrieveProductByPriceRange();
 						break;
 					}
 					case 4: {
 						System.out.println("You selected to record update");
-						productDetailsServiceImpl.updateProduct();
+						productDetailsService.updateProduct();
 						break;
 					}
 					case 5: {
 						System.out.println("You selected to get total number of record");
 //						count();
+						break;
+					}
+					case 6: {
+						System.out.println("You selected to get record by product name");
+						productDetailsService.getProductDetailsByProductName();
+						break;
+					}
+					case 7: {
+						System.out.println("You selected to get selected column values");
+						productDetailsService.getSelectedColumnValue();
 						break;
 					}
 					default:

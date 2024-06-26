@@ -72,27 +72,27 @@ public class ProductDetailsServiceImpl implements ProductDetailsService {
 	}
 
 	@Override
-	public List<ProductDetailsEntity> retrieveProduct() {
+	public void retrieveProduct() {
 		List<ProductDetailsEntity> allPrdDetails = productDetailsRepo.getAllPrdDetails();
 		System.out.println(allPrdDetails);
-		return allPrdDetails;
+		return;
 	}
 	
 	@Override
-	public List<ProductDetailsEntity> retrieveProductById(){
+	public void retrieveProductByPriceRange(){
 		List<ProductDetailsEntity> allPrdDetailsByIds = null;
 		try {
-			System.out.println("Enter MIN range:");
-			Long min = Long.parseLong(reader.readLine());
-			System.out.println("Enter MAX range:");
-			Long max = Long.parseLong(reader.readLine());
-			allPrdDetailsByIds = productDetailsRepo.getSelectedPrdDetailsByIds(min, max);
+			System.out.println("Enter MIN price range:");
+			Float startVal = Float.parseFloat(reader.readLine());
+			System.out.println("Enter MAX price range:");
+			Float endVal = Float.parseFloat(reader.readLine());
+			allPrdDetailsByIds = productDetailsRepo.getSelectedPrdDetailsByIds(startVal, endVal);
 			System.out.println("Product Details");
 			allPrdDetailsByIds.forEach(data->System.out.println(data));
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return allPrdDetailsByIds;
+		return;
 	}
 	@Override
 	public void deleteProduct(Long pId) {
@@ -102,5 +102,36 @@ public class ProductDetailsServiceImpl implements ProductDetailsService {
 		else {
 			System.err.println("Record NOT found");
 		}
+		return;
+	}
+	
+	@Override
+	public void getProductDetailsByProductName() {
+		try {
+			String prdName;
+			System.out.println("Product Name: ");
+			prdName = reader.readLine();
+			ProductDetailsEntity productDetailsEntity = productDetailsRepo.getProductDetailsByProductName(prdName);
+			System.err.println(productDetailsEntity.toString());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return;
+	}
+
+	@Override
+	public void getSelectedColumnValue() {
+		try {
+			List<Object[]> productDetailsEntityList = productDetailsRepo.getSelectedColumnOfRecords();
+			productDetailsEntityList.forEach(details->{
+				for(Object data:details) {
+					System.err.print(data+" ");
+				}
+				System.out.println();
+			});
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 }

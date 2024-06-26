@@ -13,9 +13,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="COMPUTERS_PRODUCT_DETAILS")
 @Data
@@ -24,8 +26,9 @@ import lombok.Data;
 public class ProductDetailsEntity implements Serializable {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq_gen")
+    @SequenceGenerator(name = "product_seq_gen", sequenceName = "product_id_seq", allocationSize = 1)
 	@Column(name="PRD_ID")
-//	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long pId;
 
 	@NonNull

@@ -11,8 +11,12 @@ public interface ProductDetailsService {
 
 	public void deleteProduct(Long pId);
 
-	public List<ProductDetailsEntity> retrieveProduct();
+	public void retrieveProduct();
 
-	public List<ProductDetailsEntity> retrieveProductById();
+	public void retrieveProductByPriceRange();
+	
+	public void getProductDetailsByProductName();
+	
+	public void getSelectedColumnValue();
 
 }
