@@ -8,8 +8,9 @@ public class CustomerDetailsRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-
+		while(10==10) {
+			
+		}
 	}
 
 }
